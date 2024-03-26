@@ -1348,7 +1348,7 @@ MonoBehaviour:
   lives: 3
   bricks: 20
   resetDelay: 1
-  livesText: {fileID: 0}
+  livesText: {fileID: 54838549}
   gameOver: {fileID: 366179155}
   youWon: {fileID: 1405440542}
   bricksPrefab: {fileID: 5646984480837110561, guid: 0910fc02a132af346b26f887a5456076, type: 3}
