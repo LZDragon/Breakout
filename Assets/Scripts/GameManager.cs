@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+    
     public int lives = 3;
 
     public int bricks = 20;
@@ -24,10 +26,24 @@ public class GameManager : MonoBehaviour
     public GameObject paddle;
 
     private GameObject clonePaddle;
-
+    
     private void Awake()
     {
+        CreateSingleton();
         Setup();
+    }
+
+    private void CreateSingleton()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
     }
 
     public void Setup()
