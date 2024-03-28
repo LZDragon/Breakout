@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
         if (level < brickPrefabs.Length - 1)
         {
             level++;
+            lives++;
             Invoke("Reset", resetDelay);
         }
         else
@@ -112,7 +113,6 @@ public class GameManager : MonoBehaviour
     private void Reset()
     {
         Time.timeScale = 1f;
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //SceneLoaded calls Setup
 
