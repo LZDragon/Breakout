@@ -67,7 +67,6 @@ public class GameManager : MonoBehaviour
     {
         if (bricks < 1)
         {
-            youWon.SetActive(true);
             Time.timeScale = 0.25f;
             NextLevel();
 
