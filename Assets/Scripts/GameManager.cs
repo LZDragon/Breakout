@@ -4,14 +4,15 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     
     public int lives = 3;
-
-    public int bricks = 20;
+    private int level = 0;
+    public int bricks;
 
     public float resetDelay = 1f;
 
@@ -21,16 +22,17 @@ public class GameManager : MonoBehaviour
 
     public GameObject youWon;
 
-    public GameObject bricksPrefab;
+    //public GameObject bricksPrefab;
 
     public GameObject paddle;
 
     private GameObject clonePaddle;
-    
+    private GameObject[] brickPrefabs;
+    private GameObject currentBrickPattern;
     private void Awake()
     {
+        brickPrefabs = Resources.LoadAll<GameObject>("BrickPatterns");
         CreateSingleton();
-        Setup();
     }
 
     private void CreateSingleton()
@@ -48,8 +50,10 @@ public class GameManager : MonoBehaviour
 
     public void Setup()
     {
+        Debug.Log($"Loading level {level}");
         clonePaddle = Instantiate(paddle, transform.position, Quaternion.identity);
-        Instantiate(bricksPrefab, transform.position, Quaternion.identity);
+        currentBrickPattern = Instantiate(brickPrefabs[level], transform.position, Quaternion.identity);
+        bricks = brickPrefabs[level].transform.childCount;
     }
 
     void CheckGameOver()
@@ -58,7 +62,30 @@ public class GameManager : MonoBehaviour
         {
             youWon.SetActive(true);
             Time.timeScale = 0.25f;
+            NextLevel();
+
+        }
+
+        if (lives < 1)
+        {
+            gameOver.SetActive(true);
+            Time.timeScale = .25f;
+            lives = 3;
+            level = 0;
             Invoke("Reset",resetDelay);
+        }
+    }
+
+    void NextLevel()
+    {
+        if (level < brickPrefabs.Length - 1)
+        {
+            level++;
+            Invoke("Reset", resetDelay);
+        }
+        else
+        {
+            youWon.SetActive(true);
         }
     }
 
@@ -81,22 +108,28 @@ public class GameManager : MonoBehaviour
         bricks--;
         CheckGameOver();
     }
-
+    
     private void Reset()
     {
         Time.timeScale = 1f;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneLoaded calls Setup
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
 
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Debug.Log("Pressed");
+            NextLevel();
+        }
     }
 }

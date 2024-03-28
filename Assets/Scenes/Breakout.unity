@@ -729,6 +729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
+  - component: {fileID: 705507996}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -813,6 +814,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &705507996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705507993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 971fe677b3ca06d448bf977c7f2c18c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &754473862
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,7 +923,7 @@ RectTransform:
   - {fileID: 54838548}
   - {fileID: 366179156}
   - {fileID: 1405440543}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2102787920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1175,7 +1188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290493279}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1351,7 +1364,6 @@ MonoBehaviour:
   livesText: {fileID: 54838549}
   gameOver: {fileID: 366179155}
   youWon: {fileID: 1405440542}
-  bricksPrefab: {fileID: 5646984480837110561, guid: 0910fc02a132af346b26f887a5456076, type: 3}
   paddle: {fileID: 4522669237776218377, guid: 7eb3fce2065b15947ae3f1727a7c06a8, type: 3}
 --- !u!4 &2102787920
 Transform:
@@ -1365,7 +1377,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 754473866}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
@@ -1378,6 +1391,5 @@ SceneRoots:
   - {fileID: 1188018829}
   - {fileID: 532498309}
   - {fileID: 77165268}
-  - {fileID: 754473866}
   - {fileID: 1290493282}
   - {fileID: 2102787920}
